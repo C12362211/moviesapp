@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+	before_filter :authorise, :only => :destroy
   # GET /movies
   # GET /movies.json
   def index

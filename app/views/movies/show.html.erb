@@ -19,6 +19,25 @@
   <%= @movie.genre.name %>
 </p>
 
+<h2>Please leave a comment:</h2>
+	<%= form_for([@movie, Post.new]) do |f| %>
+		<%= f.text_area :content, :rows => 3 %>
+			<div class="actions">
+			<%= f.submit "Post a Comment"%>
+		</div>
+	<% end %>
+	
+<% if @movie.posts.empty? %>
+	<h3>You are the first to comment</h3>
+<% else %>
+	<h2> What others felt about this:</h2>
+		<% @movie.posts.reverse.each do |post| %>
+			<p><%= post.content %>
+			Posted <%= time_ago_in_words(post.created_at) %> ago by
+				<%= post.user.name %></p>
+		<% end %>
+	<% end %>
+
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

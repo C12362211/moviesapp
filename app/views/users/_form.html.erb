@@ -32,9 +32,18 @@
     <%= f.check_box :regular %>
   </div>
   <div class="field">
-    <%= f.label :photo %><br />
-    <%= f.text_field :photo %>
+    <%= f.label :Administrator? %><br />
+    <%= f.check_box :admin %>
   </div>
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
+  </div>
+  <div>
+	<%= f.label :remote_image_url, "rails.png" %>
+	<%= f.text_field :remote_image_url %>
+  </div>
+
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
